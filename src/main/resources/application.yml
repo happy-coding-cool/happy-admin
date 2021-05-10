@@ -1,0 +1,22 @@
+# 端口
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/happy_admin?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: scott
+    password: 12345678
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+happy:
+  code:
+    swagger:
+      group: ${spring.application.name}
+      base-package: com.happy.admin
+      title: happy-admin
+      description: happy-admin
+      version: 1.0
+      contact:
+        name: happycoding
+        email: happycoding@aliyun.com
+      enable: true
