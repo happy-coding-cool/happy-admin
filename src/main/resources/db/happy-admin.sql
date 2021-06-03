@@ -94,6 +94,7 @@ create table h_menu (
     `menu_icon` varchar(64) DEFAULT NULL COMMENT '图标',
     `menu_path` varchar(128) DEFAULT NULL COMMENT '链接地址',
     `hidden` bit(1) DEFAULT b'0' COMMENT '隐藏',
+    `integration_mode` varchar(32) DEFAULT '1' COMMENT '集成方式：1：内链(新的tab)、2：外链(打开新窗口)、3：iframe(iframe 嵌入)、4：微前端架构' ,
     `menu_permission` varchar(64) DEFAULT NULL COMMENT '权限',
     `created_by` varchar(100) COLLATE utf8mb4_bin NOT NULL DEFAULT '-1' COMMENT '创建人姓名',
     `created_by_id` varchar(50) COLLATE utf8mb4_bin NOT NULL DEFAULT '-1' COMMENT '创建人ID',
