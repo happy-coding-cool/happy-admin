@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.happy.admin.dao.mapper.OrgMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.happy.admin.dao.entity.Org">
+        <id column="id" property="id" />
+        <result column="parent_id" property="parentId" />
+        <result column="sub_count" property="subCount" />
+        <result column="org_code" property="orgCode" />
+        <result column="org_name" property="orgName" />
+        <result column="org_manager" property="orgManager" />
+        <result column="org_sort" property="orgSort" />
+        <result column="org_sta" property="orgSta" />
+        <result column="created_by" property="createdBy" />
+        <result column="created_by_id" property="createdById" />
+        <result column="created_time" property="createdTime" />
+        <result column="updated_by" property="updatedBy" />
+        <result column="updated_by_id" property="updatedById" />
+        <result column="updated_time" property="updatedTime" />
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+      id, parent_id, sub_count, org_code, org_name, org_manager, org_sort, org_sta, created_by, created_by_id, created_time, updated_by, updated_by_id, updated_time
+    </sql>
+</mapper>

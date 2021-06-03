@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * </p>
  *
  * @author happycoding@aliyun.com
- * @since 2021-05-10 14:06:47
+ * @since 2021-06-03 10:10:14
  */
 @SpringBootApplication
 @MapperScan("com.happy.admin.**.mapper")

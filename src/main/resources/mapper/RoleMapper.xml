@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.happy.admin.dao.mapper.RoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.happy.admin.dao.entity.Role">
+        <id column="id" property="id" />
+        <result column="role_code" property="roleCode" />
+        <result column="role_name" property="roleName" />
+        <result column="role_level" property="roleLevel" />
+        <result column="role_desc" property="roleDesc" />
+        <result column="data_scope" property="dataScope" />
+        <result column="created_by" property="createdBy" />
+        <result column="created_by_id" property="createdById" />
+        <result column="created_time" property="createdTime" />
+        <result column="updated_by" property="updatedBy" />
+        <result column="updated_by_id" property="updatedById" />
+        <result column="updated_time" property="updatedTime" />
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+      id, role_code, role_name, role_level, role_desc, data_scope, created_by, created_by_id, created_time, updated_by, updated_by_id, updated_time
+    </sql>
+</mapper>

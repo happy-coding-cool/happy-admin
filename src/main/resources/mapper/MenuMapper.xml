@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.happy.admin.dao.mapper.MenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.happy.admin.dao.entity.Menu">
+        <id column="id" property="id" />
+        <result column="parent_id" property="parentId" />
+        <result column="sub_count" property="subCount" />
+        <result column="menu_type" property="menuType" />
+        <result column="menu_title" property="menuTitle" />
+        <result column="menu_sort" property="menuSort" />
+        <result column="menu_icon" property="menuIcon" />
+        <result column="menu_path" property="menuPath" />
+        <result column="hidden" property="hidden" />
+        <result column="integration_mode" property="integrationMode" />
+        <result column="menu_permission" property="menuPermission" />
+        <result column="created_by" property="createdBy" />
+        <result column="created_by_id" property="createdById" />
+        <result column="created_time" property="createdTime" />
+        <result column="updated_by" property="updatedBy" />
+        <result column="updated_by_id" property="updatedById" />
+        <result column="updated_time" property="updatedTime" />
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+      id, parent_id, sub_count, menu_type, menu_title, menu_sort, menu_icon, menu_path, hidden, integration_mode, menu_permission, created_by, created_by_id, created_time, updated_by, updated_by_id, updated_time
+    </sql>
+</mapper>
