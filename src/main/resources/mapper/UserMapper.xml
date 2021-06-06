@@ -9,6 +9,7 @@
         <result column="password" property="password" />
         <result column="user_name" property="userName" />
         <result column="nick_name" property="nickName" />
+        <result column="user_icon" property="userIcon" />
         <result column="gender" property="gender" />
         <result column="mobile" property="mobile" />
         <result column="mail" property="mail" />

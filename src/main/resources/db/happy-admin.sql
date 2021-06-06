@@ -2,10 +2,11 @@
 drop table if exists h_user;
 create table h_user (
     `id` varchar(32) COLLATE utf8mb4_bin NOT NULL COMMENT '主键',
-    `account` varchar(32) COLLATE utf8mb4_bin default NULL COMMENT '用户账号',
-    `password` varchar(50) COLLATE utf8mb4_bin default NULL COMMENT '用户密码',
+    `account` varchar(32) COLLATE utf8mb4_bin NOT NULL COMMENT '用户账号',
+    `password` varchar(50) COLLATE utf8mb4_bin NOT NULL COMMENT '用户密码',
     `user_name` varchar(32) COLLATE utf8mb4_bin NOT NULL COMMENT '用户名称',
     `nick_name` varchar(32) COLLATE utf8mb4_bin default NULL COMMENT '昵称',
+    `user_icon` varchar(128) COLLATE utf8mb4_bin default NULL COMMENT '头像',
     `gender` varchar(2) COLLATE utf8mb4_bin default NULL COMMENT '性别',
     `mobile` varchar(15) COLLATE utf8mb4_bin NOT NULL COMMENT '手机号',
     `mail` varchar(50) COLLATE utf8mb4_bin NOT NULL COMMENT '邮箱',

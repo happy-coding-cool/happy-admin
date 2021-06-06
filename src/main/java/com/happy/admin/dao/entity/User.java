@@ -44,6 +44,13 @@ public class User extends BaseEntity {
     private String nickName;
 
     /**
+     * 头像
+     */
+    @TableField("user_icon")
+    private String userIcon;
+
+
+    /**
      * 性别
      */
     @TableField("gender")
