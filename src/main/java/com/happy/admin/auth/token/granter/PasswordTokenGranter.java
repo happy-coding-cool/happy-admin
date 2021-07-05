@@ -1,5 +1,6 @@
 package com.happy.admin.auth.token.granter;
 
+import cn.hutool.core.util.StrUtil;
 import com.happy.admin.auth.common.Authentication;
 import com.happy.admin.auth.common.HappyAuthUser;
 import com.happy.admin.auth.common.HappyAuthentication;
@@ -10,6 +11,7 @@ import cool.happycoding.code.base.user.User;
 import cool.happycoding.code.base.user.UserContextService;
 
 import static com.happy.admin.auth.common.AuthStatus.INVALID_PASSWORD;
+import static com.happy.admin.auth.common.TokenConstant.GRANT_TYPE_PWD;
 import static cool.happycoding.code.base.util.HappyCodeUtil.check;
 
 /**
@@ -37,4 +39,8 @@ public class PasswordTokenGranter extends AbstractTokenGranter {
         return HappyAuthentication.of((HappyAuthUser) user);
     }
 
+    @Override
+    public boolean validateGrantType(String grantType) {
+        return StrUtil.equalsAnyIgnoreCase(GRANT_TYPE_PWD, grantType);
+    }
 }

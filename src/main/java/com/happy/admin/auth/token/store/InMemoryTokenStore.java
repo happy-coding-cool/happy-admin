@@ -12,8 +12,6 @@ import com.happy.admin.auth.token.TokenStore;
  */
 public class InMemoryTokenStore implements TokenStore {
 
-
-
     @Override
     public HappyAuthentication readAuthentication(HappyAccessToken token) {
         return null;
