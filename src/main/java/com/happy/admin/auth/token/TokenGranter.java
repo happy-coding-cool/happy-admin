@@ -4,7 +4,7 @@ import com.happy.admin.auth.common.HappyAccessToken;
 import com.happy.admin.auth.common.TokenRequest;
 
 /**
- * description
+ * <p> token </p>
  *
  * @author pengzhenchen 2021/07/05 2:59 下午
  */

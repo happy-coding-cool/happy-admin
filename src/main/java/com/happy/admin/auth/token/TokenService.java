@@ -4,7 +4,7 @@ import com.happy.admin.auth.common.HappyAccessToken;
 import cool.happycoding.code.base.user.User;
 
 /**
- * description
+ * <p>用于扩展token的生成方式</p>
  *
  * @author pengzhenchen 2021/07/05 3:50 下午
  */

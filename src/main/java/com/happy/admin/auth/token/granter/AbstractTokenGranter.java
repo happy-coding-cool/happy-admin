@@ -15,13 +15,6 @@ public abstract class AbstractTokenGranter implements TokenGranter {
 
     private final TokenService tokenService;
 
-    /**
-     * 获取待验证的用户信息
-     * @param tokenRequest
-     * @return
-     */
-    public abstract User getUserDetail(TokenRequest tokenRequest);
-
     public AbstractTokenGranter(TokenService tokenService){
         this.tokenService = tokenService;
     }
@@ -30,4 +23,11 @@ public abstract class AbstractTokenGranter implements TokenGranter {
     public HappyAccessToken grant(String grantType, TokenRequest tokenRequest) {
         return tokenService.createAccessToken(getUserDetail(tokenRequest));
     }
+
+    /**
+     * 获取待验证的用户信息
+     * @param tokenRequest
+     * @return
+     */
+    public abstract User getUserDetail(TokenRequest tokenRequest);
 }
