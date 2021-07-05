@@ -35,6 +35,11 @@ public class TokenRequest implements Serializable {
         return tokenRequest;
     }
 
+    /**
+     * 获取请求验证参数
+     * @param key
+     * @return
+     */
     public String getString(String key){
         return AuthUtils.castToString(requestParameters.get(key));
     }
