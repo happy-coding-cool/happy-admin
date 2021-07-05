@@ -12,6 +12,19 @@ import com.happy.admin.auth.common.TokenRequest;
 public interface TokenService {
 
     /**
+     * token有效期，默认为半小时
+     */
+    long TOKEN_EXPIRE = 30 * 60 * 1000;
+
+    /**
+     * token 失效时间
+     * @return
+     */
+    default long expireIn(){
+        return System.currentTimeMillis() + TOKEN_EXPIRE;
+    }
+
+    /**
      * 生成 accessToken
      * @param authentication
      * @return

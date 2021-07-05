@@ -9,12 +9,6 @@ import java.io.Serializable;
  */
 public interface HappyAccessToken extends Serializable {
 
-    String BEARER_TYPE = "Bearer";
-    String ACCESS_TOKEN = "access_token";
-    String TOKEN_TYPE = "token_type";
-    String EXPIRES_IN = "expires_in";
-    String REFRESH_TOKEN = "refresh_token";
-
     /**
      * token 类型
      * @return

@@ -9,6 +9,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.happy.admin.auth.common.TokenConstant.PASSWORD;
+import static com.happy.admin.auth.common.TokenConstant.USERNAME;
+
 /**
  * description
  *
@@ -44,4 +47,19 @@ public class TokenRequest implements Serializable {
         return AuthUtils.castToString(requestParameters.get(key));
     }
 
+    /**
+     * 获取 账号
+     * @return
+     */
+    public String getUsername(){
+        return getString(USERNAME);
+    }
+
+    /**
+     * 获取密码
+     * @return
+     */
+    public String getPassword(){
+        return getString(PASSWORD);
+    }
 }

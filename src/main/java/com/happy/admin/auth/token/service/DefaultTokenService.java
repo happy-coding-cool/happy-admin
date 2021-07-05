@@ -1,6 +1,8 @@
 package com.happy.admin.auth.token.service;
 
+import cn.hutool.core.util.IdUtil;
 import com.happy.admin.auth.common.Authentication;
+import com.happy.admin.auth.common.DefaultHappyAccessToken;
 import com.happy.admin.auth.common.HappyAccessToken;
 import com.happy.admin.auth.common.TokenRequest;
 import com.happy.admin.auth.token.TokenService;
@@ -21,8 +23,16 @@ public class DefaultTokenService implements TokenService {
 
     @Override
     public HappyAccessToken createAccessToken(Authentication authentication) {
-
-        return null;
+        String accessToken = IdUtil.fastSimpleUUID();
+        String refreshToken = IdUtil.fastSimpleUUID();
+        DefaultHappyAccessToken token
+                = DefaultHappyAccessToken.builder()
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .expiresIn(expireIn())
+                .build();
+        tokenStore.storeAccessToken(token, authentication);
+        return token;
     }
 
     @Override

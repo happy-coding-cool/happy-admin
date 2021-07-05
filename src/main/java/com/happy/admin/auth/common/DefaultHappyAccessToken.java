@@ -2,7 +2,10 @@ package com.happy.admin.auth.common;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * description
@@ -10,6 +13,9 @@ import lombok.Data;
  * @author pengzhenchen 2021/07/05 3:07 下午
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @ApiModel(description = "认证信息")
 public class DefaultHappyAccessToken implements HappyAccessToken{
 

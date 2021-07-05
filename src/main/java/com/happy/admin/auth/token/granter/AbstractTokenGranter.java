@@ -23,7 +23,7 @@ public abstract class AbstractTokenGranter implements TokenGranter {
 
     @Override
     public HappyAccessToken grant(String grantType, TokenRequest tokenRequest) {
-        return tokenService.createAccessToken(getUserDetail(tokenRequest));
+        return tokenService.createAccessToken(loadAuthentication(tokenRequest));
     }
 
     /**
@@ -31,5 +31,5 @@ public abstract class AbstractTokenGranter implements TokenGranter {
      * @param tokenRequest
      * @return
      */
-    public abstract Authentication getUserDetail(TokenRequest tokenRequest);
+    public abstract Authentication loadAuthentication(TokenRequest tokenRequest);
 }

@@ -1,6 +1,4 @@
 package com.happy.admin.auth.common;
-
-import cool.happycoding.code.base.user.User;
 import lombok.Data;
 
 /**
@@ -13,8 +11,10 @@ public class HappyAuthentication implements Authentication {
 
     private HappyPrincipal happyPrincipal;
 
-    public static HappyAuthentication of(User user){
+    public static HappyAuthentication of(HappyAuthUser user){
         HappyAuthentication authentication = new HappyAuthentication();
+        // 为了安全抹除：密码
+        user.setPassword(null);
         authentication.setHappyPrincipal(new HappyPrincipal(user));
         return authentication;
     }

@@ -1,6 +1,7 @@
 package com.happy.admin.auth.token.granter;
 
 import com.happy.admin.auth.common.Authentication;
+import com.happy.admin.auth.common.HappyAuthUser;
 import com.happy.admin.auth.common.HappyAuthentication;
 import com.happy.admin.auth.common.TokenRequest;
 import com.happy.admin.auth.password.PasswordEncoder;
@@ -28,12 +29,12 @@ public class PasswordTokenGranter extends AbstractTokenGranter {
     }
 
     @Override
-    public Authentication getUserDetail(TokenRequest tokenRequest) {
-        String username = tokenRequest.getString("username");
-        String password = tokenRequest.getString("password");
+    public Authentication loadAuthentication(TokenRequest tokenRequest) {
+        String username = tokenRequest.getUsername();
+        String password = tokenRequest.getPassword();
         User user = userContextService.loadUserDetail(username);
         check(passwordEncoder.matches(password, user.getPassword()), INVALID_PASSWORD);
-        return HappyAuthentication.of(user);
+        return HappyAuthentication.of((HappyAuthUser) user);
     }
 
 }

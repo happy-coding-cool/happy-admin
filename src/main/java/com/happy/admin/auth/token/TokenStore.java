@@ -1,5 +1,6 @@
 package com.happy.admin.auth.token;
 
+import com.happy.admin.auth.common.Authentication;
 import com.happy.admin.auth.common.HappyAccessToken;
 import com.happy.admin.auth.common.HappyAuthentication;
 
@@ -31,7 +32,7 @@ public interface TokenStore {
      * @param token
      * @param authentication
      */
-    void storeAccessToken(HappyAccessToken token, HappyAuthentication authentication);
+    void storeAccessToken(HappyAccessToken token, Authentication authentication);
 
     /**
      * 根据 token val 读取 token信息
@@ -40,5 +41,11 @@ public interface TokenStore {
      */
     HappyAccessToken readAccessToken(String tokenValue);
 
+    /**
+     * 根据 refresh token 读取 凭证信息
+     * @param refreshToken
+     * @return
+     */
+    HappyAuthentication readAuthenticationForRefreshToken(String refreshToken);
 
 }
