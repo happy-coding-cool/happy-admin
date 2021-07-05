@@ -1,8 +1,8 @@
 package com.happy.admin.auth.token.granter;
 
+import com.happy.admin.auth.common.Authentication;
 import com.happy.admin.auth.common.TokenRequest;
 import com.happy.admin.auth.token.TokenService;
-import cool.happycoding.code.base.user.User;
 
 /**
  * description
@@ -17,7 +17,7 @@ public class RefreshTokenGranter extends AbstractTokenGranter{
     }
 
     @Override
-    public User getUserDetail(TokenRequest tokenRequest) {
+    public Authentication getUserDetail(TokenRequest tokenRequest) {
 
         return null;
     }

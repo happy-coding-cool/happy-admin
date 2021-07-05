@@ -1,16 +1,18 @@
 package com.happy.admin.auth.token.granter;
 
+import com.happy.admin.auth.common.Authentication;
 import com.happy.admin.auth.common.HappyAccessToken;
 import com.happy.admin.auth.common.TokenRequest;
 import com.happy.admin.auth.token.TokenGranter;
 import com.happy.admin.auth.token.TokenService;
-import cool.happycoding.code.base.user.User;
+import lombok.Data;
 
 /**
  * description
  *
  * @author pengzhenchen 2021/07/05 3:50 下午
  */
+@Data
 public abstract class AbstractTokenGranter implements TokenGranter {
 
     private final TokenService tokenService;
@@ -29,5 +31,5 @@ public abstract class AbstractTokenGranter implements TokenGranter {
      * @param tokenRequest
      * @return
      */
-    public abstract User getUserDetail(TokenRequest tokenRequest);
+    public abstract Authentication getUserDetail(TokenRequest tokenRequest);
 }

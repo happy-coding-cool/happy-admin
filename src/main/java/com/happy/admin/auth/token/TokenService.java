@@ -1,7 +1,8 @@
 package com.happy.admin.auth.token;
 
+import com.happy.admin.auth.common.Authentication;
 import com.happy.admin.auth.common.HappyAccessToken;
-import cool.happycoding.code.base.user.User;
+import com.happy.admin.auth.common.TokenRequest;
 
 /**
  * <p>用于扩展token的生成方式</p>
@@ -12,9 +13,17 @@ public interface TokenService {
 
     /**
      * 生成 accessToken
-     * @param user
+     * @param authentication
      * @return
      */
-    HappyAccessToken createAccessToken(User user);
+    HappyAccessToken createAccessToken(Authentication authentication);
+
+    /**
+     * 根据refresh token 刷新 access token
+     * @param refreshToken
+     * @param tokenRequest
+     * @return
+     */
+    HappyAccessToken refreshAccessToken(String refreshToken, TokenRequest tokenRequest);
 
 }
