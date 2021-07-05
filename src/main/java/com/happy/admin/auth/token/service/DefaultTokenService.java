@@ -13,6 +13,7 @@ import com.happy.admin.auth.token.TokenStore;
  *
  * @author pengzhenchen 2021/07/05 4:06 下午
  */
+@SuppressWarnings("all")
 public class DefaultTokenService implements TokenService {
 
     private final TokenStore tokenStore;
