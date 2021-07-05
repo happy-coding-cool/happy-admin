@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.happy.admin.dao.mapper.PostMapper">
+<mapper namespace="com.happy.admin.sys.dao.mapper.PostMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.happy.admin.dao.entity.Post">
+    <resultMap id="BaseResultMap" type="com.happy.admin.sys.dao.entity.Post">
         <id column="id" property="id" />
         <result column="posh_code" property="poshCode" />
         <result column="posh_name" property="poshName" />
