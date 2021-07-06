@@ -8,9 +8,7 @@ import com.happy.admin.auth.common.HappyAuthentication;
 import com.happy.admin.auth.common.TokenRequest;
 import com.happy.admin.auth.password.PasswordEncoder;
 import com.happy.admin.auth.token.TokenService;
-import com.happy.admin.auth.user.AuthUserService;
-import cool.happycoding.code.base.user.User;
-import cool.happycoding.code.base.user.UserContextService;
+import com.happy.admin.auth.service.AuthUserService;
 
 import static com.happy.admin.auth.common.AuthStatus.INVALID_PASSWORD;
 import static com.happy.admin.auth.common.AuthStatus.NO_USER;

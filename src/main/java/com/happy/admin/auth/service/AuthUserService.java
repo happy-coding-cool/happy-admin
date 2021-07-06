@@ -1,4 +1,4 @@
-package com.happy.admin.auth.user;
+package com.happy.admin.auth.service;
 
 import com.happy.admin.auth.common.HappyAuthUser;
 

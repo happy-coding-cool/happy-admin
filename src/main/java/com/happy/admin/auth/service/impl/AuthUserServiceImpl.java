@@ -2,7 +2,7 @@ package com.happy.admin.auth.service.impl;
 
 import com.happy.admin.auth.common.HappyAuthUser;
 import com.happy.admin.auth.dao.mapper.AuthUserMapper;
-import com.happy.admin.auth.service.UserAccountService;
+import com.happy.admin.auth.service.AuthUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class UserAccountServiceImpl implements UserAccountService {
+public class AuthUserServiceImpl implements AuthUserService {
 
     private final AuthUserMapper authUserMapper;
 
