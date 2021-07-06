@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collections;
+import java.util.Map;
+
 /**
  * description
  *
@@ -26,8 +29,13 @@ public class DefaultHappyAccessToken implements HappyAccessToken{
     private String tokenType;
 
     @ApiModelProperty("刷新令牌")
-    private String refreshToken;
+    private HappyRefreshToken refreshToken;
 
     @ApiModelProperty("过期时间")
     private long expiresIn;
+
+    /**
+     * 附加信息
+     */
+    private Map<String, Object> additionalInformation = Collections.emptyMap();
 }

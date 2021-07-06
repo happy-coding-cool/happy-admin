@@ -14,4 +14,11 @@ public interface Authentication extends Serializable {
      * @return
      */
     HappyPrincipal getHappyPrincipal();
+
+    /**
+     * 包装 生成 token 参数
+     * @return
+     */
+    TokenRequest getTokenRequest();
+
 }

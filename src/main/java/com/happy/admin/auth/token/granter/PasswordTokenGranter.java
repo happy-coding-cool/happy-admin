@@ -38,7 +38,7 @@ public class PasswordTokenGranter extends AbstractTokenGranter {
         HappyAuthUser user = authUserService.obtainAuthUserByUsername(username);
         check(ObjectUtil.isNull(user), NO_USER);
         check(!passwordEncoder.matches(password, user.getPassword()), INVALID_PASSWORD);
-        return HappyAuthentication.of(user);
+        return HappyAuthentication.of(user, tokenRequest);
     }
 
     @Override

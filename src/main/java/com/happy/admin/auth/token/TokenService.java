@@ -12,16 +12,21 @@ import com.happy.admin.auth.common.TokenRequest;
 public interface TokenService {
 
     /**
-     * token有效期，默认为半小时
-     */
-    long TOKEN_EXPIRE = 30 * 60 * 1000;
-
-    /**
-     * token 失效时间
+     * 获取access_token的有效期
+     * @param validitySeconds
      * @return
      */
-    default long expireIn(){
-        return System.currentTimeMillis() + TOKEN_EXPIRE;
+    default long getAccessTokenExpireIn(long validitySeconds){
+        return System.currentTimeMillis() + (validitySeconds * 1000L);
+    }
+
+    /**
+     * 获取refresh_token的有效期
+     * @param validitySeconds
+     * @return
+     */
+    default long getRefreshTokenValiditySeconds(long validitySeconds){
+        return System.currentTimeMillis() + (validitySeconds * 1000L);
     }
 
     /**

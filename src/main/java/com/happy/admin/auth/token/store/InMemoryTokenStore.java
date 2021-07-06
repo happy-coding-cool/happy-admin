@@ -5,6 +5,9 @@ import com.happy.admin.auth.common.HappyAccessToken;
 import com.happy.admin.auth.common.HappyAuthentication;
 import com.happy.admin.auth.token.TokenStore;
 
+import java.util.Collection;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * description
  *
@@ -12,6 +15,12 @@ import com.happy.admin.auth.token.TokenStore;
  */
 public class InMemoryTokenStore implements TokenStore {
 
+    private final ConcurrentHashMap<String, HappyAccessToken> accessTokenStore = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, Authentication> authenticationStore = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, HappyAccessToken> authenticationToAccessTokenStore = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, Collection<HappyAccessToken>> userNameToAccessTokenStore = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, String> refreshTokenToAccessTokenStore = new ConcurrentHashMap<String, String>();
+    private final ConcurrentHashMap<String, String> accessTokenToRefreshTokenStore = new ConcurrentHashMap<String, String>();
 
     @Override
     public HappyAuthentication readAuthentication(HappyAccessToken token) {

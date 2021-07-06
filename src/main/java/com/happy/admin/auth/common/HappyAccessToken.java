@@ -31,6 +31,6 @@ public interface HappyAccessToken extends Serializable {
      * 获取 Refresh token
      * @return
      */
-    String getRefreshToken();
+    HappyRefreshToken getRefreshToken();
 
 }
