@@ -1,8 +1,8 @@
 package com.happy.admin.auth.service.impl;
 
 import com.happy.admin.auth.common.HappyAuthUser;
+import com.happy.admin.auth.dao.mapper.AuthUserMapper;
 import com.happy.admin.auth.service.UserAccountService;
-import com.happy.admin.sys.dao.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +15,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserAccountServiceImpl implements UserAccountService {
 
-    private final UserMapper userMapper;
+    private final AuthUserMapper authUserMapper;
 
     @Override
     public HappyAuthUser obtainAuthUserByUsername(String username) {
-        return userMapper.selectUserByAccount(username);
+        return authUserMapper.selectUserByAccount(username);
     }
 }

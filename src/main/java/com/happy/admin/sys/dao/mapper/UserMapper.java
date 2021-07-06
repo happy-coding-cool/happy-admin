@@ -1,10 +1,8 @@
 package com.happy.admin.sys.dao.mapper;
 
-import com.happy.admin.auth.common.HappyAuthUser;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.happy.admin.sys.dao.entity.User;
 import org.apache.ibatis.annotations.Mapper;
-
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
@@ -17,6 +15,4 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
-
-    HappyAuthUser selectUserByAccount(String account);
 }
