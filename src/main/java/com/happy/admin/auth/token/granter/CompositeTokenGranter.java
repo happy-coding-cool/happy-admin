@@ -1,5 +1,6 @@
 package com.happy.admin.auth.token.granter;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.happy.admin.auth.common.HappyAccessToken;
 import com.happy.admin.auth.common.TokenRequest;
 import com.happy.admin.auth.token.TokenGranter;
@@ -23,25 +24,16 @@ public class CompositeTokenGranter implements TokenGranter {
         this.tokenGranters = new ArrayList<>(tokenGranters);
     }
 
-    public void addTokenGranter(TokenGranter tokenGranter) {
-        if (tokenGranter == null) {
-            throw new IllegalArgumentException("Token granter is null");
-        }
-        tokenGranters.add(tokenGranter);
-    }
-
     @Override
     public HappyAccessToken grant(String grantType, TokenRequest tokenRequest) {
 
-        HappyAccessToken token = null;
-
+        HappyAccessToken token;
         for (TokenGranter granter : tokenGranters) {
             token = granter.grant(grantType, tokenRequest);
-            if (token != null) {
+            if (ObjectUtil.isNotNull(token)) {
                 return token;
             }
         }
-
         throw ExceptionFactory.exception(UNSUPPORTED_GRANT_TYPE);
     }
 }

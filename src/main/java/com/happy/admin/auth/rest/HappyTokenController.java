@@ -1,5 +1,6 @@
 package com.happy.admin.auth.rest;
 
+import cn.hutool.core.util.StrUtil;
 import com.happy.admin.auth.common.AuthForm;
 import com.happy.admin.auth.common.HappyAccessToken;
 import com.happy.admin.auth.common.TokenRequest;
@@ -12,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import static com.happy.admin.auth.common.TokenConstant.GRANT_TYPE_PWD;
 
 /**
  * description
@@ -27,9 +30,12 @@ public class HappyTokenController {
 
     private final TokenGranter tokenGranter;
 
+
     @PostMapping("token")
     @ApiOperation(value = "登录认证", notes = "登录认证")
     public BaseResult<HappyAccessToken> token(@Valid @RequestBody AuthForm authForm){
+        // 当grantType为空时，设置为：password
+        authForm.setGrantType(StrUtil.blankToDefault(authForm.getGrantType(), GRANT_TYPE_PWD));
         return BaseResult.success(tokenGranter.grant(authForm.getGrantType(), TokenRequest.of(authForm)));
     }
 

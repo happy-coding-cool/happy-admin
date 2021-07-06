@@ -13,6 +13,7 @@ import com.happy.admin.auth.token.service.DefaultTokenService;
 import com.happy.admin.auth.token.store.InMemoryTokenStore;
 import cool.happycoding.code.base.user.UserContextService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,16 +31,19 @@ public class HappyAuthConfiguration {
     private final UserContextService userContextService;
 
     @Bean
+    @ConditionalOnMissingBean
     public TokenService tokenService(TokenStore tokenStore){
         return new DefaultTokenService(tokenStore);
     }
 
     @Bean
+    @ConditionalOnMissingBean
     public TokenStore tokenStore(){
         return new InMemoryTokenStore();
     }
 
     @Bean
+    @ConditionalOnMissingBean
     public PasswordEncoder passwordEncoder(){
         return new Md5PasswordEncoder();
     }
