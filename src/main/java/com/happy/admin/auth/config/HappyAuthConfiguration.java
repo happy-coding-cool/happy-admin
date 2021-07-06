@@ -2,7 +2,9 @@ package com.happy.admin.auth.config;
 
 import com.google.common.collect.Lists;
 import com.happy.admin.auth.password.Md5PasswordEncoder;
+import com.happy.admin.auth.password.NonePasswordEncoder;
 import com.happy.admin.auth.password.PasswordEncoder;
+import com.happy.admin.auth.service.UserAccountService;
 import com.happy.admin.auth.token.TokenGranter;
 import com.happy.admin.auth.token.TokenService;
 import com.happy.admin.auth.token.TokenStore;
@@ -11,6 +13,7 @@ import com.happy.admin.auth.token.granter.PasswordTokenGranter;
 import com.happy.admin.auth.token.granter.RefreshTokenGranter;
 import com.happy.admin.auth.token.service.DefaultTokenService;
 import com.happy.admin.auth.token.store.InMemoryTokenStore;
+import com.happy.admin.auth.user.AuthUserService;
 import cool.happycoding.code.base.user.UserContextService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -28,7 +31,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class HappyAuthConfiguration {
 
-    private final UserContextService userContextService;
+    private final UserAccountService userAccountService;
 
     @Bean
     @ConditionalOnMissingBean
@@ -45,7 +48,7 @@ public class HappyAuthConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public PasswordEncoder passwordEncoder(){
-        return new Md5PasswordEncoder();
+        return new NonePasswordEncoder();
     }
 
     @Bean
@@ -55,7 +58,7 @@ public class HappyAuthConfiguration {
 
     private List<TokenGranter> getDefaultTokenGranters(){
         List<TokenGranter> granters =  Lists.newArrayList();
-        granters.add(new PasswordTokenGranter(tokenService(tokenStore()), userContextService, passwordEncoder()));
+        granters.add(new PasswordTokenGranter(tokenService(tokenStore()), userAccountService, passwordEncoder()));
         granters.add(new RefreshTokenGranter(tokenService(tokenStore()), tokenStore()));
         return granters;
     }

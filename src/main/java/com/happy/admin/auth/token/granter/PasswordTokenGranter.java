@@ -1,5 +1,6 @@
 package com.happy.admin.auth.token.granter;
 
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.happy.admin.auth.common.Authentication;
 import com.happy.admin.auth.common.HappyAuthUser;
@@ -7,10 +8,12 @@ import com.happy.admin.auth.common.HappyAuthentication;
 import com.happy.admin.auth.common.TokenRequest;
 import com.happy.admin.auth.password.PasswordEncoder;
 import com.happy.admin.auth.token.TokenService;
+import com.happy.admin.auth.user.AuthUserService;
 import cool.happycoding.code.base.user.User;
 import cool.happycoding.code.base.user.UserContextService;
 
 import static com.happy.admin.auth.common.AuthStatus.INVALID_PASSWORD;
+import static com.happy.admin.auth.common.AuthStatus.NO_USER;
 import static com.happy.admin.auth.common.TokenConstant.GRANT_TYPE_PWD;
 import static cool.happycoding.code.base.util.HappyCodeUtil.check;
 
@@ -21,12 +24,12 @@ import static cool.happycoding.code.base.util.HappyCodeUtil.check;
  */
 public class PasswordTokenGranter extends AbstractTokenGranter {
 
-    private final UserContextService userContextService;
+    private final AuthUserService authUserService;
     private final PasswordEncoder passwordEncoder;
 
-    public PasswordTokenGranter(TokenService tokenService, UserContextService userContextService, PasswordEncoder passwordEncoder) {
+    public PasswordTokenGranter(TokenService tokenService, AuthUserService authUserService, PasswordEncoder passwordEncoder) {
         super(tokenService);
-        this.userContextService = userContextService;
+        this.authUserService = authUserService;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -34,9 +37,10 @@ public class PasswordTokenGranter extends AbstractTokenGranter {
     public Authentication loadAuthentication(TokenRequest tokenRequest) {
         String username = tokenRequest.getUsername();
         String password = tokenRequest.getPassword();
-        User user = userContextService.loadUserDetail(username);
+        HappyAuthUser user = authUserService.obtainAuthUserByUsername(username);
+        check(ObjectUtil.isNull(user), NO_USER);
         check(!passwordEncoder.matches(password, user.getPassword()), INVALID_PASSWORD);
-        return HappyAuthentication.of((HappyAuthUser) user);
+        return HappyAuthentication.of(user);
     }
 
     @Override

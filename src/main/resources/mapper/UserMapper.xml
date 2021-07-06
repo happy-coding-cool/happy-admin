@@ -27,4 +27,13 @@
     <sql id="Base_Column_List">
       id, account, password, user_name, nick_name, gender, mobile, mail, org_id, user_type, user_sta, created_by, created_by_id, created_time, updated_by, updated_by_id, updated_time
     </sql>
+
+    <select id="selectUserByAccount" resultType="com.happy.admin.auth.common.HappyAuthUser">
+        select
+               id as userId,
+               account as userName,
+               password from h_user
+        where account=#{account}
+    </select>
+
 </mapper>
