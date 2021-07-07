@@ -1,10 +1,12 @@
 package com.happy.admin.auth.rest;
 
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.happy.admin.auth.common.AuthForm;
 import com.happy.admin.auth.common.HappyAccessToken;
 import com.happy.admin.auth.common.TokenRequest;
 import com.happy.admin.auth.token.TokenGranter;
+import com.happy.admin.auth.token.TokenStore;
 import cool.happycoding.code.base.result.BaseResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -28,6 +30,7 @@ import static com.happy.admin.auth.common.TokenConstant.GRANT_TYPE_PWD;
 @RequestMapping("happy/auth")
 public class HappyTokenController {
 
+    private final TokenStore tokenStore;
     private final TokenGranter tokenGranter;
 
 
@@ -43,7 +46,8 @@ public class HappyTokenController {
     @GetMapping("revoke")
     @ApiOperation(value = "注销token", notes = "注销token")
     public BaseResult<Boolean> revoke(String token){
-        // TODO 注销token
+        // 注销token
+        tokenStore.removeAccessToken(token);
         return BaseResult.success(Boolean.TRUE);
     }
 
@@ -51,8 +55,9 @@ public class HappyTokenController {
     @GetMapping("check")
     @ApiOperation(value = "校验token", notes = "校验token")
     public BaseResult<Boolean> check(String token){
-        // TODO 校验token
-        return BaseResult.success(Boolean.TRUE);
+        HappyAccessToken accessToken = tokenStore.readAccessToken(token);
+        return BaseResult.success(ObjectUtil.isNotNull(accessToken)
+                && accessToken.getExpiresIn() > System.currentTimeMillis());
     }
 
 

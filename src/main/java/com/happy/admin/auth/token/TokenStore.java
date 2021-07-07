@@ -50,6 +50,12 @@ public interface TokenStore {
     void removeAccessToken(HappyAccessToken token);
 
     /**
+     * 删除token
+     * @param token
+     */
+    void removeAccessToken(String token);
+
+    /**
      * 根据账号(username) 获取当前登录的用户
      * @param userName
      * @param userName

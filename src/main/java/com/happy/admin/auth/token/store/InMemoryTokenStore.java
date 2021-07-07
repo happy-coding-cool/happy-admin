@@ -73,6 +73,7 @@ public class InMemoryTokenStore implements TokenStore {
         removeAccessToken(token.getAccessToken());
     }
 
+    @Override
     public void removeAccessToken(String tokenValue){
 
         HappyAccessToken removed = accessTokenStore.remove(tokenValue);
