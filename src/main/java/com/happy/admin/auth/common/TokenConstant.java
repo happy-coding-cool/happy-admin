@@ -1,7 +1,4 @@
 package com.happy.admin.auth.common;
-import com.google.common.collect.Lists;
-
-import java.util.List;
 
 /**
  * description
