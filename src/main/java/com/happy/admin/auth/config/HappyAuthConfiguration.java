@@ -1,6 +1,7 @@
 package com.happy.admin.auth.config;
 
 import com.google.common.collect.Lists;
+import com.happy.admin.auth.filter.HappyAuthenticatedFilter;
 import com.happy.admin.auth.password.NonePasswordEncoder;
 import com.happy.admin.auth.password.PasswordEncoder;
 import com.happy.admin.auth.service.AuthUserService;
@@ -14,6 +15,7 @@ import com.happy.admin.auth.token.service.DefaultTokenService;
 import com.happy.admin.auth.token.store.InMemoryTokenStore;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -52,6 +54,19 @@ public class HappyAuthConfiguration {
     public TokenGranter tokenGranter(){
         return new CompositeTokenGranter(getDefaultTokenGranters());
     }
+
+    @Bean
+    public FilterRegistrationBean<HappyAuthenticatedFilter> happyAuthenticatedFilter(){
+        HappyAuthenticatedFilter happyAuthenticatedFilter
+                = new HappyAuthenticatedFilter(Lists.newArrayList(), tokenStore(), Integer.MIN_VALUE);
+        FilterRegistrationBean<HappyAuthenticatedFilter> filterFilterRegistrationBean
+                = new FilterRegistrationBean<>();
+        filterFilterRegistrationBean.setName("happyAuthenticatedFilter");
+        filterFilterRegistrationBean.addUrlPatterns("/*");
+        filterFilterRegistrationBean.setFilter(happyAuthenticatedFilter);
+        return filterFilterRegistrationBean;
+    }
+
 
     private List<TokenGranter> getDefaultTokenGranters(){
         List<TokenGranter> granters =  Lists.newArrayList();

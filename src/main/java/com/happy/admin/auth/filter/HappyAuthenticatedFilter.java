@@ -6,6 +6,7 @@ import com.happy.admin.auth.common.HappyAccessToken;
 import com.happy.admin.auth.token.TokenStore;
 import cool.happycoding.code.base.user.User;
 import cool.happycoding.code.user.wrapper.HttpServletRequestHeaderWrapper;
+import org.springframework.http.HttpStatus;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -38,13 +39,11 @@ public class HappyAuthenticatedFilter extends AbstractAuthenticatedFilter {
         // 验证状态
         String token = StrUtil.blankToDefault(request.getHeader(AUTHORIZATION),
                 request.getParameter(PARAM_ACCESS_TOKEN));
-
         // 校验token不能为空
         check(StrUtil.isBlank(token), NO_TOKEN);
         if (token.startsWith(BEARER)) {
             token = StrUtil.trim(StrUtil.removeAll(token, BEARER));
         }
-
         HappyAccessToken happyAccessToken = tokenStore.readAccessToken(token);
         // 校验状态是否过期
         check(System.currentTimeMillis() > happyAccessToken.getExpiresIn(), INVALID_TOKEN);
