@@ -26,12 +26,9 @@ public class HappyAuthenticatedFilter extends AbstractAuthenticatedFilter {
 
     private final TokenStore tokenStore;
 
-    private final int order;
-
-    public HappyAuthenticatedFilter(List<String> skipUrls, TokenStore tokenStore, int order) {
+    public HappyAuthenticatedFilter(List<String> skipUrls, TokenStore tokenStore) {
         super(skipUrls);
         this.tokenStore = tokenStore;
-        this.order = order;
     }
 
     @Override
@@ -59,8 +56,4 @@ public class HappyAuthenticatedFilter extends AbstractAuthenticatedFilter {
         }
     }
 
-    @Override
-    public int getOrder() {
-        return order;
-    }
 }

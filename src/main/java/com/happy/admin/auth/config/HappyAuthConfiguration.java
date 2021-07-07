@@ -18,6 +18,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 
 import java.util.List;
 
@@ -57,14 +58,13 @@ public class HappyAuthConfiguration {
 
     @Bean
     public FilterRegistrationBean<HappyAuthenticatedFilter> happyAuthenticatedFilter(){
-        HappyAuthenticatedFilter happyAuthenticatedFilter
-                = new HappyAuthenticatedFilter(Lists.newArrayList(), tokenStore(), Integer.MIN_VALUE);
-        FilterRegistrationBean<HappyAuthenticatedFilter> filterFilterRegistrationBean
+        FilterRegistrationBean<HappyAuthenticatedFilter> happyAuthenticatedFilter
                 = new FilterRegistrationBean<>();
-        filterFilterRegistrationBean.setName("happyAuthenticatedFilter");
-        filterFilterRegistrationBean.addUrlPatterns("/*");
-        filterFilterRegistrationBean.setFilter(happyAuthenticatedFilter);
-        return filterFilterRegistrationBean;
+        happyAuthenticatedFilter.setFilter(new HappyAuthenticatedFilter(Lists.newArrayList(), tokenStore()));
+        happyAuthenticatedFilter.setName("happyAuthenticatedFilter");
+        happyAuthenticatedFilter.addUrlPatterns("/*");
+        happyAuthenticatedFilter.setOrder(Ordered.HIGHEST_PRECEDENCE + 1);
+        return happyAuthenticatedFilter;
     }
 
 

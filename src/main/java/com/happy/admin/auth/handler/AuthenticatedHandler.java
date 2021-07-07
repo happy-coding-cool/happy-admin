@@ -15,7 +15,7 @@ public class AuthenticatedHandler {
 
     static {
         DEFAULT_SKIP_URLS.add("/happy/auth/**");
-        DEFAULT_SKIP_URLS.add("/captcha/**");
+        DEFAULT_SKIP_URLS.add("/happy/captcha/**");
 
         DEFAULT_SKIP_URLS.add("/actuator/health/**");
         DEFAULT_SKIP_URLS.add("/log/**");

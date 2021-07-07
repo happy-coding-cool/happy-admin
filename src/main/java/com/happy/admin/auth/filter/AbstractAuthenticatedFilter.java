@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author pengzhenchen 2021/07/07 8:41 上午
  */
-public abstract class AbstractAuthenticatedFilter implements OrderedFilter {
+public abstract class AbstractAuthenticatedFilter implements Filter {
 
     private final List<String> skipUrls;
     private final AntPathMatcher antPathMatcher = new AntPathMatcher();
