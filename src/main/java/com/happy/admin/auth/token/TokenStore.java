@@ -2,7 +2,8 @@ package com.happy.admin.auth.token;
 
 import com.happy.admin.auth.common.Authentication;
 import com.happy.admin.auth.common.HappyAccessToken;
-import com.happy.admin.auth.common.HappyAuthentication;
+
+import java.util.Collection;
 
 /**
  * <p>
@@ -14,18 +15,19 @@ import com.happy.admin.auth.common.HappyAuthentication;
 public interface TokenStore {
 
     /**
-     * 根据 token 获取凭证
+     * 根据access token 获取凭证信息
      * @param token
      * @return
      */
-    HappyAuthentication readAuthentication(HappyAccessToken token);
+    Authentication readAuthenticationForAccessToken(String token);
 
     /**
-     * 根据access token获取凭证
-     * @param token
+     * 根据 refresh token 获取凭证信息
+     * @param refreshToken
      * @return
      */
-    HappyAuthentication readAuthentication(String token);
+    Authentication readAuthenticationForRefreshToken(String refreshToken);
+
 
     /**
      * 根据token存储凭证
@@ -35,17 +37,25 @@ public interface TokenStore {
     void storeAccessToken(HappyAccessToken token, Authentication authentication);
 
     /**
-     * 根据 token val 读取 token信息
+     * 根据 access token 读取 token信息
      * @param tokenValue
      * @return
      */
     HappyAccessToken readAccessToken(String tokenValue);
 
     /**
-     * 根据 refresh token 读取 凭证信息
-     * @param refreshToken
+     * 删除 access token
+     * @param token
+     */
+    void removeAccessToken(HappyAccessToken token);
+
+    /**
+     * 根据账号(username) 获取当前登录的用户
+     * @param userName
+     * @param userName
      * @return
      */
-    HappyAuthentication readAuthenticationForRefreshToken(String refreshToken);
+    Collection<HappyAccessToken> findTokensByUserName(String userName);
+
 
 }

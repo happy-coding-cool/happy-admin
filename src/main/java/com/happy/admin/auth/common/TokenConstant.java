@@ -12,6 +12,7 @@ public interface TokenConstant {
      */
     String USERNAME = "username";
     String PASSWORD = "password";
+    String USER_ID = "user-id";
 
     String BEARER_TYPE = "Bearer";
     String ACCESS_TOKEN = "accessToken";
@@ -19,6 +20,10 @@ public interface TokenConstant {
     String EXPIRES_IN = "expiresIn";
     String REFRESH_TOKEN = "refreshToken";
 
+
+    String BEARER = "Bearer ";
+    String PARAM_ACCESS_TOKEN = "access_token";
+    String AUTHORIZATION = "Authorization";
 
     /**
      * grant_type

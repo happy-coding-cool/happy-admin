@@ -3,6 +3,7 @@ package com.happy.admin.auth.filter;
 import cn.hutool.core.collection.CollUtil;
 import com.happy.admin.auth.handler.AuthenticatedHandler;
 import cool.happycoding.code.user.wrapper.HttpServletRequestHeaderWrapper;
+import org.springframework.boot.web.servlet.filter.OrderedFilter;
 import org.springframework.util.AntPathMatcher;
 
 import javax.servlet.*;
@@ -16,7 +17,7 @@ import java.util.List;
  *
  * @author pengzhenchen 2021/07/07 8:41 上午
  */
-public abstract class AbstractAuthenticatedFilter implements Filter {
+public abstract class AbstractAuthenticatedFilter implements OrderedFilter {
 
     private final List<String> skipUrls;
     private final AntPathMatcher antPathMatcher = new AntPathMatcher();
@@ -47,7 +48,7 @@ public abstract class AbstractAuthenticatedFilter implements Filter {
      * @param request
      * @param response
      */
-    protected abstract void doAuthenticate(HttpServletRequest request, HttpServletResponse response);
+    protected abstract void doAuthenticate(HttpServletRequestHeaderWrapper request, HttpServletResponse response);
 
 
 }

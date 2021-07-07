@@ -1,5 +1,7 @@
 package com.happy.admin.auth.common;
 
+import cool.happycoding.code.base.user.User;
+
 import java.io.Serializable;
 
 /**
@@ -20,5 +22,20 @@ public interface Authentication extends Serializable {
      * @return
      */
     TokenRequest getTokenRequest();
+
+    /**
+     * 获取username
+     * @return
+     */
+    default String getUserName(){
+        HappyPrincipal principal = getHappyPrincipal();
+        if (principal!=null){
+            User user = principal.getUser();
+            if (user!=null){
+                return user.getUserName();
+            }
+        }
+        return null;
+    }
 
 }

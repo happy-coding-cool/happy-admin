@@ -38,4 +38,20 @@ public class DefaultHappyAccessToken implements HappyAccessToken{
      * 附加信息
      */
     private Map<String, Object> additionalInformation = Collections.emptyMap();
+
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj != null && toString().equals(obj.toString());
+    }
+
+    @Override
+    public int hashCode() {
+        return toString().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(getAccessToken());
+    }
 }
