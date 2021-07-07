@@ -1,4 +1,7 @@
 package com.happy.admin.auth.common;
+import com.google.common.collect.Lists;
+
+import java.util.List;
 
 /**
  * description
@@ -25,4 +28,5 @@ public interface TokenConstant {
      */
     String GRANT_TYPE_REFRESH_TOKEN  = "refresh_token";
     String GRANT_TYPE_PWD   = "password";
+
 }
