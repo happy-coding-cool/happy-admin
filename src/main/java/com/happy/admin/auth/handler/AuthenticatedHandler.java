@@ -14,14 +14,18 @@ public class AuthenticatedHandler {
     private static final List<String> DEFAULT_SKIP_URLS = Lists.newArrayList();
 
     static {
-        DEFAULT_SKIP_URLS.add("/example");
         DEFAULT_SKIP_URLS.add("/happy/auth/**");
         DEFAULT_SKIP_URLS.add("/captcha/**");
+
         DEFAULT_SKIP_URLS.add("/actuator/health/**");
-        DEFAULT_SKIP_URLS.add("/v2/api-docs/**");
         DEFAULT_SKIP_URLS.add("/log/**");
         DEFAULT_SKIP_URLS.add("/error/**");
         DEFAULT_SKIP_URLS.add("/assets/**");
+
+        DEFAULT_SKIP_URLS.add("/doc.html");
+        DEFAULT_SKIP_URLS.add("/webjars/**");
+        DEFAULT_SKIP_URLS.add("/v2/api-docs/**");
+        DEFAULT_SKIP_URLS.add("/swagger-resources");
     }
 
     /**

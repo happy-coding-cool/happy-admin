@@ -21,12 +21,12 @@ import static com.happy.admin.auth.common.TokenConstant.USERNAME;
 public class TokenRequest implements Serializable {
 
     /**
-     * access token 有效期
+     * access token 有效期，单位：秒
      */
     private long accessTokenValiditySeconds;
 
     /**
-     * refresh token 有效期
+     * refresh token 有效期，单位：秒
      */
     private long refreshTokenValiditySeconds;
 
@@ -37,8 +37,10 @@ public class TokenRequest implements Serializable {
             .unmodifiableMap(new HashMap<>());
 
     public TokenRequest(){
-        this.accessTokenValiditySeconds = 30;
-        this.refreshTokenValiditySeconds = 60;
+        // 默认半小时
+        this.accessTokenValiditySeconds = 30 * 60;
+        // 默认1小时
+        this.refreshTokenValiditySeconds = 60 * 60;
     }
 
     /**

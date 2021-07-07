@@ -58,7 +58,14 @@ public class InMemoryTokenStore implements TokenStore {
 
     @Override
     public HappyAccessToken readAccessToken(String tokenValue) {
-        return accessTokenStore.get(tokenValue);
+        HappyAccessToken accessToken = accessTokenStore.get(tokenValue);
+        if (ObjectUtil.isNotNull(accessToken)){
+            if (System.currentTimeMillis() > accessToken.getExpiresIn()){
+                // token 已过期，删除缓存的token
+                removeAccessToken(tokenValue);
+            }
+        }
+        return accessToken;
     }
 
     @Override

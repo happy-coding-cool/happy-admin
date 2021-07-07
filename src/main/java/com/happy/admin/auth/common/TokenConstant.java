@@ -1,29 +1,18 @@
 package com.happy.admin.auth.common;
 
+import cool.happycoding.code.base.common.Constants;
+
 /**
  * description
  *
  * @author pengzhenchen 2021/07/05 5:25 下午
  */
-public interface TokenConstant {
+public interface TokenConstant extends Constants {
 
-    /**
-     * user info
-     */
-    String USERNAME = "username";
-    String PASSWORD = "password";
-    String USER_ID = "user-id";
-
-    String BEARER_TYPE = "Bearer";
     String ACCESS_TOKEN = "accessToken";
     String TOKEN_TYPE = "tokenType";
     String EXPIRES_IN = "expiresIn";
     String REFRESH_TOKEN = "refreshToken";
-
-
-    String BEARER = "Bearer ";
-    String PARAM_ACCESS_TOKEN = "access_token";
-    String AUTHORIZATION = "Authorization";
 
     /**
      * grant_type
