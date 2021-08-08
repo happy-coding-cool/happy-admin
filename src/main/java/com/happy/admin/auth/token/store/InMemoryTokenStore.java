@@ -63,6 +63,7 @@ public class InMemoryTokenStore implements TokenStore {
             if (System.currentTimeMillis() > accessToken.getExpiresIn()){
                 // token 已过期，删除缓存的token
                 removeAccessToken(tokenValue);
+                return null;
             }
         }
         return accessToken;

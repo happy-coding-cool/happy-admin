@@ -22,6 +22,7 @@ public class AuthenticatedHandler {
         DEFAULT_SKIP_URLS.add("/error/**");
         DEFAULT_SKIP_URLS.add("/assets/**");
 
+        DEFAULT_SKIP_URLS.add("/favicon.ico");
         DEFAULT_SKIP_URLS.add("/doc.html");
         DEFAULT_SKIP_URLS.add("/webjars/**");
         DEFAULT_SKIP_URLS.add("/v2/api-docs/**");

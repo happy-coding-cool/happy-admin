@@ -3,6 +3,7 @@ package com.happy.admin.auth.filter;
 import cn.hutool.core.collection.CollUtil;
 import com.happy.admin.auth.handler.AuthenticatedHandler;
 import cool.happycoding.code.user.wrapper.HttpServletRequestHeaderWrapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.filter.OrderedFilter;
 import org.springframework.util.AntPathMatcher;
 
@@ -17,6 +18,7 @@ import java.util.List;
  *
  * @author pengzhenchen 2021/07/07 8:41 上午
  */
+@Slf4j
 public abstract class AbstractAuthenticatedFilter implements Filter {
 
     private final List<String> skipUrls;
@@ -31,6 +33,7 @@ public abstract class AbstractAuthenticatedFilter implements Filter {
         HttpServletRequestHeaderWrapper requestWrapper =
                 new HttpServletRequestHeaderWrapper((HttpServletRequest) request);
         String uri = requestWrapper.getRequestURI();
+        log.info("request uri:{}", uri);
         // 登录凭证的校验
         if (!match(uri)){
             doAuthenticate(requestWrapper, (HttpServletResponse) response);
