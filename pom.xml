@@ -6,7 +6,7 @@
     <parent>
         <groupId>cool.happycoding</groupId>
         <artifactId>happy-code-parent</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.0.3.RELEASE</version>
     </parent>
 
     <groupId>com.happy.admin</groupId>
